@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop ML Predictor</title>
+ <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>🌱 Standard Crop Values</h2>
+
+      <table>
+        <tr>
+          <th>Crop</th>
+          <th>N</th>
+          <th>P</th>
+          <th>K</th>
+          <th>Temp (°C)</th>
+        </tr>
+
+        <tr>
+          <td>Rice</td>
+          <td>90</td>
+          <td>40</td>
+          <td>40</td>
+          <td>20–30</td>
+        </tr>
+
+        <tr>
+          <td>Maize</td>
+          <td>80</td>
+          <td>45</td>
+          <td>35</td>
+          <td>18–27</td>
+        </tr>
+
+        <tr>
+          <td>Apple</td>
+          <td>25</td>
+          <td>135</td>
+          <td>200</td>
+          <td>15–24</td>
+        </tr>
+
+        <tr>
+          <td>Coffee</td>
+          <td>100</td>
+          <td>20</td>
+          <td>30</td>
+          <td>15–28</td>
+        </tr>
+
+        <tr>
+          <td>Lentil</td>
+          <td>40</td>
+          <td>60</td>
+          <td>20</td>
+          <td>18–25</td>
+        </tr>
+      </table>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <h1>🌾 Crop Prediction Model</h1>
+
+      <form action="{{ url_for('predict') }}" method="post">
+
+        <input type="text" name="Nitrogen" placeholder="Nitrogen (N)" required>
+        <input type="text" name="Phosphorus" placeholder="Phosphorus (P)" required>
+        <input type="text" name="Potassium" placeholder="Potassium (K)" required>
+
+        <input type="text" name="temperature" placeholder="Temperature (°C)" required>
+        <input type="text" name="humidity" placeholder="Humidity (%)" required>
+        <input type="text" name="pH" placeholder="Soil pH" required>
+        <input type="text" name="rainfall" placeholder="Rainfall (mm)" required>
+
+        <button type="submit">Predict Crop</button>
+      </form>
+
+      {% if prediction_text %}
+      <div class="result">
+        🌱 Recommended Crop: <strong>{{ prediction_text }}</strong>
+      </div>
+      {% endif %}
+
+    </main>
+
+  </div>
+
+</body>
+</html>

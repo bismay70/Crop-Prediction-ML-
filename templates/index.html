@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Crop ML Predictor</title>
+  <link rel="icon" href="data:,🌾">
  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -11,7 +12,6 @@
   <div class="container">
     <aside class="sidebar">
       <h2>🌱 Standard Crop Values</h2>
-
       <table>
         <tr>
           <th>Crop</th>
@@ -65,7 +65,6 @@
 
     <main class="main">
       <h1>🌾 Crop Prediction Model</h1>
-
       <form action="{{ url_for('predict') }}" method="post">
 
         <input type="text" name="Nitrogen" placeholder="Nitrogen (N)" required>
@@ -87,8 +86,6 @@
       {% endif %}
 
     </main>
-
   </div>
-
 </body>
 </html>
